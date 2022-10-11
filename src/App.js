@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import ClimaForm from './components/pages/ClimaForm/ClimaForm';
+import ClimaList from './components/pages/ClimaList/ClimaList';
+import Login from './components/pages/Login/Login';
+import Registro from './components/pages/Login/Registro';
+import NavBar from './components/pages/NavBar/NavBar';
+import ClimaContext, { myContext } from './ClimaContext/ClimaContext';
+import { BrowserRouter } from 'react-router-dom';
+import { useContext } from 'react';
+
+
+
 
 function App() {
+
+  const { login} = useContext(myContext);
+
+console.log(login)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+                    <NavBar/>
+                    <Routes>                        
+          
+                        <Route  path='/' element={<Login/>}/>
+                        <Route  path='/listado' element={<ClimaList/>}  />
+                        {/* <Route path='/' element={<ClimaForm/>}/> */}
+                        <Route path='/formulario' element={<ClimaForm/>}/>
+                        <Route  path='/registro' element={<Registro/>}  />
+                    </Routes> 
+                    
+          
+         
+      
+            
+                       
+ 
+   </div>
   );
 }
 
